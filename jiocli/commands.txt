@@ -1,0 +1,20 @@
+. openrc admin admin
+openstack role delete Member
+
+openstack role create jio_admin
+openstack role create tenant_admin
+openstack role create member
+
+openstack user create myjioadmin
+openstack user create mytenantadmin
+openstack user create mymember
+
+openstack project create myproject
+
+openstack role add --project myproject --user myjioadmin jio_admin
+openstack role add --project myproject --user mytenantadmin tenant_admin
+openstack role add --project myproject --user mymember member
+
+openstack user set --password nova myjioadmin
+openstack user set --password nova mytenantadmin
+openstack user set --password nova mymember
