@@ -10,7 +10,15 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :devstack do |cfg|
       cfg.vm.hostname = "node1.example.com"
-      cfg.vm.synced_folder("/home/r/src/", "/opt/stack/")
+      cfg.vm.synced_folder("/home/r/src/python-openstackclient", "/opt/stack/python-openstackclient")
+      cfg.vm.synced_folder("/home/r/src/keystone", "/opt/stack/keystone")
+      cfg.vm.synced_folder("/home/r/src/python-keystoneclient", "/opt/stack/python-keystoneclient")
+      cfg.vm.synced_folder("/home/r/src/glance", "/opt/stack/glance")
+      cfg.vm.synced_folder("/home/r/src/python-keystoneclient", "/opt/stack/python-keystoneclient")
+      cfg.vm.synced_folder("/home/r/src/cinder", "/opt/stack/cinder")
+      cfg.vm.synced_folder("/home/r/src/python-cinderclient", "/opt/stack/python-cinderclient")
+      cfg.vm.synced_folder("/home/r/src/cinder", "/opt/stack/cinder")
+      cfg.vm.synced_folder("/home/r/src/devstack", "/opt/stack/devstack")
       config.vm.provider "virtualbox" do |v|
           v.memory = 3333
           v.cpus = 1
