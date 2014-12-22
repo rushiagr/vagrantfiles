@@ -17,4 +17,12 @@ Vagrant.configure("2") do |config|
           v.cpus = 1
       end
   end
+  config.vm.define :devstack do |cfg|
+      cfg.vm.box = "ubuntu64"
+      cfg.vm.hostname = "devstack.example.com"
+      config.vm.provider "virtualbox" do |v|
+          v.memory = 2500
+          v.cpus = 1
+      end
+  end
 end
