@@ -21,6 +21,7 @@ Vagrant.configure("2") do |config|
       cfg.vm.box = "trusty64"
       cfg.vm.hostname = "devstack.example.com"
       config.vm.provider "virtualbox" do |v|
+          v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
           v.memory = 2500
           v.cpus = 1
       end
