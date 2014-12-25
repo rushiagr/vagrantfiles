@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
       end
   end
   config.vm.define :devstack do |cfg|
-      cfg.vm.box = "ubuntu64"
+      cfg.vm.box = "trusty64"
       cfg.vm.hostname = "devstack.example.com"
       config.vm.provider "virtualbox" do |v|
           v.memory = 2500
