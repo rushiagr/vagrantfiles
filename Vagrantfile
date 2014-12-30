@@ -26,4 +26,13 @@ Vagrant.configure("2") do |config|
           v.cpus = 1
       end
   end
+  config.vm.define :mdb do |cfg|
+      cfg.vm.box = "trusty64"
+      cfg.vm.hostname = "mdb.example.com"
+      config.vm.provider "virtualbox" do |v|
+          v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+          v.memory = 2200
+          v.cpus = 1
+      end
+  end
 end
