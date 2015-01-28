@@ -28,6 +28,15 @@ Vagrant.configure("2") do |config|
           v.cpus = 1
       end
   end
+
+  # Cinder + keystone only
+  config.vm.define :cinder do |cfg|
+      cfg.vm.box = "trusty64"
+      config.vm.provider "virtualbox" do |v|
+          v.memory = 1500
+          v.cpus = 1
+      end
+  end
   config.vm.define :mdb do |cfg|
       cfg.vm.box = "trusty64"
       cfg.vm.hostname = "mdb.example.com"
