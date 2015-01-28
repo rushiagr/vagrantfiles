@@ -59,35 +59,33 @@ Vagrant.configure("2") do |config|
   end
     config.vm.define :mncontroller do |controller_config|
         controller_config.vm.box = "devstack2"
-        controller_config.vm.host_name = "controller.example.com"
+        controller_config.vm.host_name = "devstack.example.com"
         controller_config.vm.network :private_network, ip:"192.168.100.10"
         controller_config.vm.network :private_network, ip:"192.168.200.10"
-		config.vm.provider :virtualbox do |vb|
-		    vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
-            vb.customize ["modifyvm", :id, "--memory", "3000"]
+        config.vm.provider :virtualbox do |vb|
+            vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+            vb.customize ["modifyvm", :id, "--memory", "2200"]
             vb.customize ["modifyvm", :id, "--cpus", "2"]
-			# vb.gui = true
         end
     end
 
     config.vm.define :mncompute1 do |compute1_config|
         compute1_config.vm.box = "devstack2"
-        compute1_config.vm.host_name = "compute1.example.com"
+        compute1_config.vm.host_name = "devstack.example.com"
         compute1_config.vm.network :private_network, ip:"192.168.100.30"
         compute1_config.vm.network :private_network, ip:"192.168.200.30"
         config.vm.provider :virtualbox do |vb|
-		    vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
-            vb.customize ["modifyvm", :id, "--memory", "1500"]
+            vb.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
+            vb.customize ["modifyvm", :id, "--memory", "1200"]
             vb.customize ["modifyvm", :id, "--cpus", "2"]
-			# vb.gui = true
         end
     end
 
     config.vm.define :mnaccess do |access_config|
         access_config.vm.box = "trusty64"
         access_config.vm.host_name = "access.example.com"
-        access_config.vm.network :private_network, ip:"192.168.100.40"
-        access_config.vm.network :private_network, ip:"192.168.200.40"
+        access_config.vm.network :private_network, ip: "192.168.100.40"
+        access_config.vm.network :private_network, ip: "192.168.200.40"
         config.vm.provider :virtualbox do |vb|
             vb.customize ["modifyvm", :id, "--memory", "256"]
             vb.customize ["modifyvm", :id, "--cpus", "1"]
