@@ -94,4 +94,26 @@ Vagrant.configure("2") do |config|
 			# vb.gui = true
         end
     end
+
+  # Vitess VM
+  config.vm.define :vt do |cfg|
+      cfg.vm.box = "trusty64"
+      cfg.vm.hostname = "vt.example.com"
+      cfg.vm.network :private_network, ip: "192.168.100.11"
+      config.vm.provider "virtualbox" do |v|
+          v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+          v.memory = 3000
+          v.cpus = 1
+      end
+  end
+  # Vitess VM part two
+  config.vm.define :vt2 do |cfg|
+      cfg.vm.box = "ubuntu/trusty64"
+      cfg.vm.hostname = "vt.example.com"
+      config.vm.provider "virtualbox" do |v|
+          v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
+          v.memory = 2000
+          v.cpus = 1
+      end
+  end
 end
